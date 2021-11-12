@@ -6,7 +6,7 @@ ENV LANG C.UTF-8
 RUN apt-get update && apt-get -y dist-upgrade
 
 # Install required tools
-RUN apt-get install -y wget unzip xvfb
+RUN apt-get install -y wget unzip
 
 # Install Chrome
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
