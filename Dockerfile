@@ -14,20 +14,16 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
 
 # Install matching chromedriver
-RUN google-chrome --version \
-    | cut -d " " -f 3 \
-    | xargs -I '{}' wget https://chromedriver.storage.googleapis.com/{}/chromedriver_linux64.zip -O /usr/local/bin/chromdriver.zip
-
-RUN cd /usr/local/bin && unzip /usr/local/bin/chromdriver.zip
-
-RUN chmod +x /usr/local/bin/chromedriver
+COPY install_chromedriver.sh /opt/install_chromedriver.sh
+RUN bash /opt/install_chromedriver.sh
 
 # Cleanup
 RUN apt-get -y purge unzip \
     && apt-get -y --purge autoremove \
 	&& apt-get -y autoclean \
 	&& apt-get -y clean \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/* \
+    && rm /opt/install_chromedriver.sh
 
 RUN groupadd -g 1000 localuser \
 	&& useradd -u 1000 -g 1000 -m localuser
