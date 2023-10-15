@@ -34,6 +34,6 @@ USER localuser
 STOPSIGNAL SIGKILL
 
 # Start chromdriver with no access restrictions!
-ENTRYPOINT ["/usr/local/bin/chromedriver", "--allowed-ips", "--allowed-origins=*"]
+ENTRYPOINT ["/usr/local/bin/chrome-linux64/chrome", "--allowed-ips", "--allowed-origins=*"]
 
 EXPOSE 9515
