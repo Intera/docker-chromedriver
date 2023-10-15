@@ -18,7 +18,7 @@ wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${chromedriverV
 
 cd /usr/local/bin && unzip /usr/local/bin/chromdriver.zip
 
-chmod +x /usr/local/bin/chromedriver
+chmod +x /usr/local/bin/chrome-linux64/chrome
 
 # Cleanup
 rm /usr/local/bin/chromdriver.zip
